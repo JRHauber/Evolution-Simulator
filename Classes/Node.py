@@ -1,22 +1,39 @@
 class Node():
 
 	designations = {
-		0: '',
-		1: '',
-		2: '',
-		3: '',
-		4: '',
-		5: '',
-		6: '',
-		7: '',
-		8: '',
-		9: '',
-		10: '',
-		11: '',
-		12: '',
-		13: '',
-		14: '',
-		15: ''
+		0: 'Pheromone Gradient X',
+		1: 'Pheromone Gradient Fw',
+		2: 'Pheromone Density',
+		3: 'Age',
+		4: 'RND',
+		5: 'Blockage X',
+		6: 'Oscillator',
+		7: 'Blockage Fw',
+		8: 'Population Gradient X',
+		9: 'Population Density',
+		10: 'Population Gradient Fw',
+		11: 'Long-Range Population Fw',
+		12: 'Last Movement Y',
+		13: 'Long-Range Blockage Fw',
+		14: 'Last Movement X',
+		15: 'Y Border Distance',
+		16: 'Genetic Similarity Fw',
+		17: 'X Border Distance',
+		18: 'X Position',
+		19: 'Nearest Border Distance',
+		20: 'Y Position',
+		21: 'Internal Neuron',
+		22: 'Set Long-Range Distance',
+		23: 'Kill Forward Neighbor',
+		24: 'Set Oscillator Period',
+		25: 'Emit Pheromone',
+		26: 'Set Responsiveness',
+		27: 'Move Forward',
+		28: 'Move Random',
+		29: 'Move Reverse',
+		30: 'Move Left-Right',
+		31: 'Move X',
+		32: 'Move Y'
 	}
 
 
@@ -35,9 +52,9 @@ class Node():
 	def get_intensity():
 		return self.intensity
 	def get_sensitivity():
-		return self.sensitivity
+		return self.sensitivity2
 	def get_designation():
-		output = str(self.designation) + designations(self.designation)
+		output = "({}) - {}".format(str(self.designation), designations[self.designation])
 		return output
 	def get_connection():
 		return self.connection
@@ -48,7 +65,7 @@ class Node():
 		return output
 
 	def trigger_node():
-		if self.designation < 16:
+		if self.designation < 33:
 			match self.designation:
 				case 0:
 				case 1:
@@ -66,8 +83,12 @@ class Node():
 				case 13:
 				case 14:
 				case 15:
+				case 16:
+				case 17:
+				case 18:
+				case 19:
 		else:
-			match (self.designation % 16):
+			match (self.designation % 33):
 				case 0:
 				case 1:
 				case 2:
@@ -83,6 +104,4 @@ class Node():
 				case 12:
 				case 13:
 				case 14:
-				case 15:
-	def message_node():
-		
+				case 15:		

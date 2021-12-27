@@ -1,4 +1,5 @@
 import Genome
+import Brain
 
 dirs = {
 	0: [0, -1],
@@ -24,6 +25,8 @@ class Creature():
 		self.c_pos[1] = c_pos[1] + window_offsets[1] + window_offsets[3]
 		self.genome = Genome(mut_mod, parent_genome)
 		self.brain = Brain(self.genome.get_genes())
+		self.age = 0
+		self.reactivity = 0
 
 	def get_genome():
 		return self.genome
@@ -37,8 +40,7 @@ class Creature():
 	def get_dir():
 		return dir_faced
 
-	def get_next_cell():
-		output = [0,0]
-		output[0] = c_pos[0] + next_cell[0]
-		output[1] = c_pos[1] + next_cell[1]
-		return output
+	def get_age():
+		return self.age
+
+	def sim_step():
