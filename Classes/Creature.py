@@ -27,6 +27,7 @@ class Creature():
 		self.brain = Brain(self.genome.get_genes())
 		self.age = 0
 		self.reactivity = 0
+		self.gradient_range = 2
 
 	def get_genome():
 		return self.genome

@@ -1,6 +1,14 @@
+import numpy as np
+import math
+
 class Node():
 
+	def sigmoid(x):
+		output = 1/(1 + math.exp(-x))
+		return float(output)
+
 	designations = {
+		#INPUT NEURONS
 		0: 'Pheromone Gradient X',
 		1: 'Pheromone Gradient Fw',
 		2: 'Pheromone Density',
@@ -22,7 +30,9 @@ class Node():
 		18: 'X Position',
 		19: 'Nearest Border Distance',
 		20: 'Y Position',
+		#INTERNAL NEURONS
 		21: 'Internal Neuron',
+		#OUTPUT NEURONS
 		22: 'Set Long-Range Distance',
 		23: 'Kill Forward Neighbor',
 		24: 'Set Oscillator Period',
@@ -64,9 +74,70 @@ class Node():
 		output = '' + intensity_gene + connect_gene + designation_gene + sensitivity_gene
 		return output
 
-	def trigger_node():
+	def trigger_node(args):
 		if self.designation < 33:
 			match self.designation:
+				case 0:
+					c_x = args[0]
+					c_y = args[1]
+					gradient_range = args[2]
+					pheromone_levels = []
+					i = -1 * gradient_range
+					while i <= gradient_range:
+						pheromone_levels.append(get_cell(c_x, c_y).get_pheromones())
+						i += 1
+					for x in pheromone_levels:
+						if pheromone_levels.index(x) < gradient_range:
+							x *= -1
+						elif pheromone_levels.index(x) == gradient_range:
+							x = 0
+					activation = sum(pheromone_levels)
+
+					if activation < 0:
+						activation = activation * -1
+
+					return sigmoid(float(activation))
+				case 1:
+					c_x = args[0]
+					c_y = args[1]
+					gradient_range = args[2]
+					fwd = args[3]
+
+					
+					
+				case 2:
+				case 3:
+				case 4:
+				case 5:
+				case 6:
+				case 7:
+				case 8:
+				case 9:
+				case 10:
+				case 11:
+				case 12:
+				case 13:
+				case 14:
+				case 15:
+				case 16:
+				case 17:
+				case 18:
+				case 19:
+				case 20:
+				case 21:
+				case 22:
+				case 23:
+				case 24:
+				case 25:
+				case 26:
+				case 27:
+				case 28:
+				case 29:
+				case 30:
+				case 31:
+				case 32:
+		else:
+			match (self.designation % 33):
 				case 0:
 				case 1:
 				case 2:
@@ -87,21 +158,16 @@ class Node():
 				case 17:
 				case 18:
 				case 19:
-		else:
-			match (self.designation % 33):
-				case 0:
-				case 1:
-				case 2:
-				case 3:
-				case 4:
-				case 5:
-				case 6:
-				case 7:
-				case 8:
-				case 9:
-				case 10:
-				case 11:
-				case 12:
-				case 13:
-				case 14:
-				case 15:		
+				case 20:
+				case 21:
+				case 22:
+				case 23:
+				case 24:
+				case 25:
+				case 26:
+				case 27:
+				case 28:
+				case 29:
+				case 30:
+				case 31:
+				case 32:
